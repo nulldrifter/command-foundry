@@ -1,27 +1,189 @@
-# sourced via mtgjson.com, ref: https://mtgjson.com/files/all-cards/
-CREATE TABLE cards (
-	cardId INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
-    colorIdentity VARCHAR(10) NOT NULL,
-    colors VARCHAR(10) NOT NULL,
-    convertedManaCost DECIMAL(4,2) UNSIGNED NOT NULL,
-    edhrec INT(4),
-    manaCost VARCHAR(20) NOT NULL,
-    multiverseId INT(4) UNSIGNED,
-    name VARCHAR(64) NOT NULL,
-    printings VARCHAR(100) NOT NULL,
-    rarity VARCHAR(20) NOT NULL,
-    scryfallId VARCHAR(64),
-    scryfallIllustrationId VARCHAR(64),
-    scryfallOracleId VARCHAR(64),
-    subtypes VARCHAR(50),
-    supertypes VARCHAR(50),
-    tcgplayerProductId INT(4) UNSIGNED,
-    text VARCHAR(255),
-    type VARCHAR(100) NOT NULL,
+/*
+    Schema from mtgsqlive
+*/
+CREATE TABLE `sets` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    baseSetSize INTEGER,
+    block TEXT,
+    boosterV3 TEXT,
+    code VARCHAR(8) UNIQUE NOT NULL,
+    codeV3 TEXT,
+    isFoilOnly INTEGER,
+    isForeignOnly INTEGER,
+    isOnlineOnly INTEGER,
+    isPartialPreview INTEGER,
+    keyruneCode TEXT,
+    mcmId INTEGER,
+    mcmName TEXT,
+    meta TEXT,
+    mtgoCode TEXT,
+    name TEXT,
+    parentCode TEXT,
+    releaseDate DATE,
+    tcgplayerGroupId INTEGER,
+    totalSetSize INTEGER,
+    type TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-    PRIMARY KEY (cardId)
-);
+CREATE TABLE `cards` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    artist TEXT,
+    borderColor TEXT,
+    colorIdentity TEXT,
+    colorIndicator TEXT,
+    colors TEXT,
+    convertedManaCost FLOAT,
+    duelDeck TEXT,
+    edhrecRank INTEGER,
+    faceConvertedManaCost FLOAT,
+    flavorText TEXT,
+    frameEffect TEXT,
+    frameEffects TEXT,
+    frameVersion TEXT,
+    hand TEXT,
+    hasFoil INTEGER NOT NULL DEFAULT 0,
+    hasNoDeckLimit INTEGER NOT NULL DEFAULT 0,
+    hasNonFoil INTEGER NOT NULL DEFAULT 0,
+    isAlternative INTEGER NOT NULL DEFAULT 0,
+    isArena INTEGER NOT NULL DEFAULT 0,
+    isBuyABox INTEGER NOT NULL DEFAULT 0,
+    isDateStamped INTEGER NOT NULL DEFAULT 0,
+    isFullArt INTEGER NOT NULL DEFAULT 0,
+    isMtgo INTEGER NOT NULL DEFAULT 0,
+    isOnlineOnly INTEGER NOT NULL DEFAULT 0,
+    isOversized INTEGER NOT NULL DEFAULT 0,
+    isPaper INTEGER NOT NULL DEFAULT 0,
+    isPromo INTEGER NOT NULL DEFAULT 0,
+    isReprint INTEGER NOT NULL DEFAULT 0,
+    isReserved INTEGER NOT NULL DEFAULT 0,
+    isStarter INTEGER NOT NULL DEFAULT 0,
+    isStorySpotlight INTEGER NOT NULL DEFAULT 0,
+    isTextless INTEGER NOT NULL DEFAULT 0,
+    isTimeshifted INTEGER NOT NULL DEFAULT 0,
+    layout TEXT,
+    leadershipSkills TEXT,
+    life TEXT,
+    loyalty TEXT,
+    manaCost TEXT,
+    mcmId INTEGER,
+    mcmMetaId INTEGER,
+    mtgArenaId INTEGER,
+    mtgoFoilId INTEGER,
+    mtgoId INTEGER,
+    multiverseId INTEGER,
+    name TEXT,
+    names TEXT,
+    number TEXT,
+    originalText TEXT,
+    originalType TEXT,
+    otherFaceIds TEXT,
+    power TEXT,
+    printings TEXT,
+    purchaseUrls TEXT,
+    rarity TEXT,
+    scryfallId TEXT,
+    scryfallIllustrationId TEXT,
+    scryfallOracleId TEXT,
+    setCode VARCHAR(8) NOT NULL,
+    INDEX(setCode),
+    FOREIGN KEY (setCode) REFERENCES sets(code) ON UPDATE CASCADE ON DELETE CASCADE,
+    side TEXT,
+    subtypes TEXT,
+    supertypes TEXT,
+    tcgplayerProductId INTEGER,
+    text TEXT,
+    toughness TEXT,
+    type TEXT,
+    types TEXT,
+    uuid VARCHAR(36) UNIQUE NOT NULL,
+    variations TEXT,
+    watermark TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `tokens` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    artist TEXT,
+    borderColor TEXT,
+    colorIdentity TEXT,
+    colors TEXT,
+    isOnlineOnly INTEGER NOT NULL DEFAULT 0,
+    layout TEXT,
+    name TEXT,
+    names TEXT,
+    number TEXT,
+    power TEXT,
+    reverseRelated TEXT,
+    scryfallId TEXT,
+    scryfallIllustrationId TEXT,
+    scryfallOracleId TEXT,
+    setCode VARCHAR(8) NOT NULL,
+    INDEX(setCode),
+    FOREIGN KEY (setCode) REFERENCES sets(code) ON UPDATE CASCADE ON DELETE CASCADE,
+    side TEXT,
+    subtypes TEXT,
+    supertypes TEXT,
+    text TEXT,
+    toughness TEXT,
+    type TEXT,
+    types TEXT,
+    uuid VARCHAR(36) NOT NULL,
+    watermark TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `prices` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    date DATE,
+    price REAL,
+    type TEXT,
+    uuid VARCHAR(36) NOT NULL,
+    INDEX(uuid),
+    FOREIGN KEY (uuid) REFERENCES cards(uuid) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `rulings` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    date DATE,
+    text TEXT,
+    uuid VARCHAR(36) NOT NULL,
+    INDEX(uuid),
+    FOREIGN KEY (uuid) REFERENCES cards(uuid) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `legalities` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    format TEXT,
+    status TEXT,
+    uuid VARCHAR(36) NOT NULL,
+    INDEX(uuid),
+    FOREIGN KEY (uuid) REFERENCES cards(uuid) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `set_translations` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    language TEXT,
+    setCode VARCHAR(8) NOT NULL,
+    INDEX(setCode),
+    FOREIGN KEY (setCode) REFERENCES sets(code) ON UPDATE CASCADE ON DELETE CASCADE,
+    translation TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `foreign_data` (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    flavorText TEXT,
+    language TEXT,
+    multiverseId INTEGER,
+    name TEXT,
+    text TEXT,
+    type TEXT,
+    uuid VARCHAR(36) NOT NULL,
+    INDEX(uuid),
+    FOREIGN KEY (uuid) REFERENCES cards(uuid) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+/*
+    Codex Tables
+*/
 CREATE TABLE acceleration (
 	cardId INT(4) UNSIGNED,
     cycle VARCHAR(24),
