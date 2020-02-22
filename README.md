@@ -1,7 +1,7 @@
 <a href="foundry.gg"><img src="https://foundry.gg/wp-content/uploads/2019/07/logo150.png" title="Foundry" alt="Foundry"></a>
 
 # Command Foundry
-This project serves as the backend for [Command Foundry](foundry.gg).
+This project serves as the backend for [Command Foundry](https://foundry.gg).
 
 If you are interested in learning more or contributing then reach out to us on the [Deck Forge Discord Server](https://discord.gg/fxv6e2d).
 
