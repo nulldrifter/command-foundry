@@ -25,10 +25,15 @@
   },
   "homepage": "https://github.com/yharnam/mtg-foundry#readme",
   "devDependencies": {
+    "@types/node": "^13.7.4",
     "db-migrate": "^0.11.6",
     "db-migrate-mysql": "^2.1.0",
     "eslint": "^6.8.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.14",
+    "axios": "^0.19.2"
   }
 }
