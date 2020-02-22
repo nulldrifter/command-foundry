@@ -1,0 +1,34 @@
+{
+  "name": "mtg-foundry",
+  "version": "1.0.0",
+  "description": "Backend for foundry.gg",
+  "main": "src/index.ts",
+  "scripts": {
+    "db-up": "db-migrate up --config ./db/database.json --migrations-dir ./db/migrations",
+    "db-down": "db-migrate down --config ./db/database.json --migrations-dir ./db/migrations",
+    "lint": "eslint --fix src/ --ext .ts",
+    "start": "ts-node src/index.ts",
+    "test": "jest --watch test/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yharnam/mtg-foundry.git"
+  },
+  "keywords": [
+    "cedh",
+    "codex"
+  ],
+  "author": "Josh Davidson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yharnam/mtg-foundry/issues"
+  },
+  "homepage": "https://github.com/yharnam/mtg-foundry#readme",
+  "devDependencies": {
+    "db-migrate": "^0.11.6",
+    "db-migrate-mysql": "^2.1.0",
+    "eslint": "^6.8.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.2"
+  }
+}

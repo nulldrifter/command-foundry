@@ -1,0 +1,6 @@
+# configs
+db/database.json
+
+# dev stuff
+node_modules/
+.idea/
