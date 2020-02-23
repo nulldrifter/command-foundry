@@ -185,7 +185,7 @@ CREATE TABLE `foreign_data` (
     Codex Tables
 */
 CREATE TABLE acceleration (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     cycle VARCHAR(24),
     net VARCHAR(4),
     ramped VARCHAR(4),
@@ -194,31 +194,31 @@ CREATE TABLE acceleration (
     synergies VARCHAR(255),
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
 
 CREATE TABLE stax (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     rank INT(2) UNSIGNED,
     targets VARCHAR(100),
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
 
 CREATE TABLE counters (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     additionalCost VARCHAR(64),
     altCost INT(2),
     rank INT(2) UNSIGNED,
     targets VARCHAR(64),
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
 
 CREATE TABLE board_wipes (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     playersAffected VARCHAR(16),
     rank INT(2) UNSIGNED,
     style VARCHAR(64),
@@ -228,27 +228,27 @@ CREATE TABLE board_wipes (
     upsides VARCHAR(16),
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
 
 CREATE TABLE tutors (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     finds VARCHAR(100),
     puts VARCHAR(100),
     quantity INT(2) UNSIGNED,
     rank INT(2) UNSIGNED,
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
 
 CREATE TABLE card_advantage (
-	cardId INT(4) UNSIGNED,
+	cardId INTEGER,
     fixed VARCHAR(100),
     rank INT(2) UNSIGNED,
     repeatsEach VARCHAR(100), # turn, activation, trigger
     style VARCHAR(100),
 
     PRIMARY KEY (cardId),
-    FOREIGN KEY (cardId) REFERENCES cards(cardId)
+    FOREIGN KEY (cardId) REFERENCES cards(id)
 );
