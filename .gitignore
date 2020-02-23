@@ -1,5 +1,6 @@
 # configs
 db/database.json
+.env*
 
 # dev stuff
 node_modules/

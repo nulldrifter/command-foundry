@@ -1,4 +1,4 @@
-export type DbConfig = {
+export interface DbConfig {
   database: string
   host: string
   multipleStatements: boolean

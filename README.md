@@ -45,6 +45,18 @@ $ npm i
     }
     ```
 * Update your db schema to the latest version by running `$ npm run db-up`
+* Set up your env variables by creating a `.env.localhost` file in the root dir and populate it with the following:
+    ```
+    DB_HOST=???
+    DB_USER=???
+    DB_PASS=???
+    ```
+
+
+## Usage
+`$ npm run download` : downloads the latest sqlite .zip file from mtgjson
+
+`$ npm run upload` : load latest card info into the DB
 
 
 ## Features
