@@ -1,3 +1,5 @@
+import {Database} from '../utils/db';
+
 const AdmZip = require('adm-zip');
 
 const massageSql = (sql: string): string => sql
@@ -12,7 +14,16 @@ const unzipSql = (): string => {
 	return massageSql(zip.readAsText(inserts));
 };
 
-export const uploadCardsToDb = async (): Promise<void> => {
-	// TODO: db.query() this
-	console.log(unzipSql());
-};
+(async(): Promise<void> => {
+	const db = new Database({
+		host     : '',
+		user     : '',
+		password : '',
+		database : 'foundry_db',
+		multipleStatements: true,
+	});
+
+	await db.query(unzipSql());
+	await db.close();
+	return Promise.resolve();
+})();

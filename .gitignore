@@ -4,4 +4,7 @@ db/database.json
 # dev stuff
 node_modules/
 .idea/
-AllPrintings.sqlite.zip
+.DS_Store
+
+# externals
+AllPrintings.sql*
