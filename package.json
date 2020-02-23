@@ -7,7 +7,8 @@
     "db-up": "db-migrate up --config ./db/database.json --migrations-dir ./db/migrations",
     "db-down": "db-migrate down --config ./db/database.json --migrations-dir ./db/migrations",
     "lint": "eslint --fix src/ --ext .ts",
-    "start": "ts-node src/index.ts",
+    "download": "ts-node src/cardImporter/downloader.ts",
+    "upload": "ts-node -r dotenv/config src/cardImporter/uploader.ts dotenv_config_path=./.env.localhost",
     "test:e2e": "jest --watch test/e2e**",
     "test:unit": "jest --watch test/unit**"
   },
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.14",
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0"
   }
 }
