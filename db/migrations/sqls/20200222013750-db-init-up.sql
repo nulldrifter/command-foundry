@@ -222,7 +222,7 @@ CREATE TABLE board_wipes (
     playersAffected VARCHAR(16),
     rank INT(2) UNSIGNED,
     style VARCHAR(64),
-    targets VARCHAR(64),
+    removes VARCHAR(64),
     timing VARCHAR(16),
     toughness VARCHAR(10),
     upsides VARCHAR(16),
