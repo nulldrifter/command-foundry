@@ -1,5 +1,6 @@
 import {parseAccelerationSheetToSql} from '../../src/cardImporter/codexParser';
 import {Acceleration} from '../../src/types/codex';
+import * as codexMocks from './mocks/codex';
 
 describe('card ingestion', () => {
   xdescribe('fetching and transforming card data', () => {
@@ -28,42 +29,24 @@ describe('card ingestion', () => {
   });
 
 
-  // TODO: configure jest for TS
   describe('codex parser', () => {
+    it(`should parse the relevant sheets`, () => {
+
+    });
+
+    it(`should upload the data from each sheet in parallel`, () => {
+
+    });
+
     it(`should convert the 'Acceleration' tab to SQL statements`, () => {
-      const mockAccelerationData: Acceleration[] = [
-        {
-          Name: 'Chrome Mox',
-          Rank: 0,
-          Cycle: 'Power',
-          Style: 'Rock',
-          Ramped: 1,
-          Net: 1,
-          Synergies: '',
-        },
-        {
-          Name: 'Mana Crypt',
-          Rank: 0,
-          Cycle: 'Power',
-          Style: 'Rock',
-          Ramped: 2,
-          Net: 2,
-          Synergies: '',
+      const sql = parseAccelerationSheetToSql(codexMocks.accelerationData);
 
-        },
-        {
-          Name: 'Carpet of Flowers',
-          Rank: 0,
-          Cycle: '',
-          Style: 'Trigger',
-          Ramped: '2+',
-          Net: '2+',
-          Synergies: '',
-        }
-      ];
-      const sql = parseAccelerationSheetToSql(mockAccelerationData);
+      expect(sql).toContain('DELETE FROM acceleration');
+      expect(sql).toContain(`INSERT INTO acceleration (cardId, Cycle, Net, ramped, rank, style, synergies) SELECT id, '', '2+', '2+', 0, 'Trigger', 'hating on Urza' FROM cards WHERE name LIKE 'Carpet of Flowers';`);
+    });
 
-      expect(sql).toEqual('');
+    it(`should always escape user inputs`, () => {
+
     });
   })
 });

@@ -15,7 +15,7 @@ const unzipSql = (): string => {
 	return massageSql(zip.readAsText(inserts));
 };
 
-const unzipAndUploadFullSql = async (db: Database) => {
+const unzipAndUploadFullSql = async (db: Database): Promise<void> => {
 	await db.query(unzipSql());
 };
 
@@ -29,12 +29,11 @@ const unzipAndUploadFullSql = async (db: Database) => {
 	});
 
 	try {
-		await unzipAndUploadFullSql(db);
+		// await unzipAndUploadFullSql(db);
 		await parseAndUploadCodex(db);
 	} catch (err) {
 		console.error(err);
 	} finally {
 		await db.close();
-		console.log('done');
 	}
 })();

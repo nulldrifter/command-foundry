@@ -200,7 +200,7 @@ CREATE TABLE acceleration (
 CREATE TABLE stax (
 	cardId INTEGER,
     rank INT(2) UNSIGNED,
-    targets VARCHAR(100),
+    attacks VARCHAR(100),
 
     PRIMARY KEY (cardId),
     FOREIGN KEY (cardId) REFERENCES cards(id)
