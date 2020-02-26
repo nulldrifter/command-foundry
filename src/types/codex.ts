@@ -11,7 +11,7 @@ export interface Acceleration {
 export interface Stax {
 	Attacks: string
 	Name: string
-	Rank: string
+	Rank: number
 }
 
 export interface Counters {

@@ -1,6 +1,6 @@
-import {Acceleration} from '../../../src/types/codex';
+import {Acceleration, Stax} from '../../../src/types/codex';
 
-export const accelerationData: Acceleration[] = [
+export const accelerationSheet: Acceleration[] = [
 	{
 		Name: 'Chrome Mox',
 		Rank: 0,
@@ -18,5 +18,18 @@ export const accelerationData: Acceleration[] = [
 		Ramped: '2+',
 		Net: '2+',
 		Synergies: 'hating on Urza',
+	}
+];
+
+export const staxSheet: Stax[] = [
+	{
+		Name: 'Back to Basics',
+		Rank: 1,
+		Attacks: 'Tap, Mana',
+	},
+	{
+		Name: 'Blood Moon',
+		Rank: 1,
+		Attacks: 'Mana',
 	}
 ];
