@@ -29,7 +29,7 @@ describe('card ingestion', () => {
 
 
   // TODO: configure jest for TS
-  xdescribe('codex parser', () => {
+  describe('codex parser', () => {
     it(`should convert the 'Acceleration' tab to SQL statements`, () => {
       const mockAccelerationData: Acceleration[] = [
         {

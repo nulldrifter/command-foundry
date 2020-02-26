@@ -1,5 +1,5 @@
 import * as parser from 'simple-excel-to-json';
-import {escape} from 'mysql'
+import {escape} from 'mysql';
 import {Database} from '../utils/db';
 import {Acceleration} from '../types/codex';
 
