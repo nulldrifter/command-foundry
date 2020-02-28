@@ -50,6 +50,7 @@ $ npm i
     DB_HOST=???
     DB_USER=???
     DB_PASS=???
+    MTG_JSON_URL=https://www.mtgjson.com/files/AllPrintings.sql.zip
     ```
 
 
