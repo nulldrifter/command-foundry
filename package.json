@@ -9,8 +9,7 @@
     "lint": "eslint --fix src/ --ext .ts",
     "download": "ts-node -r dotenv/config src/cardImporter/downloader.ts dotenv_config_path=./.env.localhost",
     "upload": "ts-node -r dotenv/config src/cardImporter/uploader.ts dotenv_config_path=./.env.localhost",
-    "test:e2e": "jest test/e2e**",
-    "test:unit": "jest --watch --coverage test/unit**"
+    "test": "jest --watch --coverage test/unit**"
   },
   "repository": {
     "type": "git",
