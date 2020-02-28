@@ -27,7 +27,7 @@ $ npm i
 ```
 
 #### Configure
-* Install MySQL locallyL (ref: [MySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/))
+* Install MySQL locally (ref: [MySQL Installation Guide](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/))
 * Initialize this database by running `db/dbInit.sql`
 * Create `db/database.json` and populate it with the following information:
     ```json
