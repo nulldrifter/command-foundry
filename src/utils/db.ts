@@ -5,6 +5,7 @@ export class Database {
 	connection;
 
 	constructor(mySqlConfig: DbConfig) {
+		// TODO: replace with connection pool so we can parallelize uploads
 		this.connection = createConnection(mySqlConfig);
 		this.connection.connect();
 	}

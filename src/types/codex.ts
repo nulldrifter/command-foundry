@@ -15,16 +15,16 @@ export interface Stax {
 }
 
 export interface Counters {
-	Rank: number
-	AltCost: string|number
-	AdditionalCost: string
+	'Add._Cost': string|number
+	Alt_Cost: string|number
 	Name: string
+	Rank: number
 	Target: string
 }
 
 export interface BoardWipes {
-	Name: string
 	'Player(s)': string
+	Name: string
 	Rank: number
 	Removed: string
 	Style: string
@@ -42,9 +42,9 @@ export interface Tutors {
 }
 
 export interface CardAdvantage {
-	Name: string
-	Rank: number
-	Style: string
-	Repeat: string
 	Fixed: string
+	Name: string
+	Rank: number|string
+	Repeat: string
+	Style: string
 }

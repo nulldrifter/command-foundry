@@ -235,7 +235,7 @@ CREATE TABLE tutors (
 	cardId INTEGER,
     finds VARCHAR(100),
     puts VARCHAR(100),
-    quantity INT(2) UNSIGNED,
+    quantity VARCHAR(5),
     rank INT(2) UNSIGNED,
 
     PRIMARY KEY (cardId),

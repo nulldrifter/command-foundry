@@ -29,7 +29,7 @@ const unzipAndUploadFullSql = async (db: Database): Promise<void> => {
 	});
 
 	try {
-		// await unzipAndUploadFullSql(db);
+		await unzipAndUploadFullSql(db);
 		await parseAndUploadCodex(db);
 	} catch (err) {
 		console.error(err);
