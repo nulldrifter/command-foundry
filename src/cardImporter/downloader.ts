@@ -1,5 +1,5 @@
-const axios = require('axios').default;
-const fs = require('fs');
+import axios from 'axios';
+import * as fs from 'fs';
 
 (async(): Promise<void> => {
 	const zippedSql = await axios({

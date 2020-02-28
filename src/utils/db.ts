@@ -10,14 +10,14 @@ export class Database {
 		this.connection.connect();
 	}
 
-	query(sql: string) {
-		this.connection.query(sql, (err, results) => {
+	query(sql: string): Promise<object[]|void> {
+		return this.connection.query(sql, (err, results) => {
 			if (err) throw err;
 			console.log(results[0]);
 		});
 	}
 
-	close() {
-		this.connection.end();
+	close(): Promise<void> {
+		return this.connection.end();
 	}
 }

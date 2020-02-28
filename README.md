@@ -58,6 +58,7 @@ $ npm i
 `$ npm run download` : downloads the latest sqlite .zip file from mtgjson
 
 `$ npm run upload` : load latest card info into the DB
+* note that the full upload exceeds the default MySQL packet size and you'll likely need to: `SET GLOBAL max_allowed_packet=256*1024*1024;`
 
 
 ## Features

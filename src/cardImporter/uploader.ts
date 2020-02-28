@@ -1,7 +1,7 @@
 import {Database} from '../utils/db';
 import {parseAndUploadCodex} from './codexParser';
 
-const AdmZip = require('adm-zip');
+import * as AdmZip from 'adm-zip';
 
 const massageSql = (sql: string): string => sql
 	.split('\n')
@@ -29,6 +29,7 @@ const unzipAndUploadFullSql = async (db: Database): Promise<void> => {
 	});
 
 	try {
+		// TODO: would be nice to break out full load and codex updates
 		await unzipAndUploadFullSql(db);
 		await parseAndUploadCodex(db);
 	} catch (err) {
