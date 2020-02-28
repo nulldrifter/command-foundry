@@ -3,9 +3,11 @@ db/database.json
 .env*
 
 # dev stuff
+coverage/
 node_modules/
 .idea/
 .DS_Store
 
 # externals
 AllPrintings.sql*
+*Codex.xlsx

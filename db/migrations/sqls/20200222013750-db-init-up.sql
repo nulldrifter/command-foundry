@@ -200,7 +200,7 @@ CREATE TABLE acceleration (
 CREATE TABLE stax (
 	cardId INTEGER,
     rank INT(2) UNSIGNED,
-    targets VARCHAR(100),
+    attacks VARCHAR(100),
 
     PRIMARY KEY (cardId),
     FOREIGN KEY (cardId) REFERENCES cards(id)
@@ -222,7 +222,7 @@ CREATE TABLE board_wipes (
     playersAffected VARCHAR(16),
     rank INT(2) UNSIGNED,
     style VARCHAR(64),
-    targets VARCHAR(64),
+    removes VARCHAR(64),
     timing VARCHAR(16),
     toughness VARCHAR(10),
     upsides VARCHAR(16),
@@ -235,7 +235,7 @@ CREATE TABLE tutors (
 	cardId INTEGER,
     finds VARCHAR(100),
     puts VARCHAR(100),
-    quantity INT(2) UNSIGNED,
+    quantity VARCHAR(5),
     rank INT(2) UNSIGNED,
 
     PRIMARY KEY (cardId),
