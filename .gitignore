@@ -11,3 +11,7 @@ node_modules/
 # externals
 AllPrintings.sql*
 *Codex*.xlsx
+
+# outputs
+cards.sql
+codex.sql

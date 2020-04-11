@@ -6,6 +6,8 @@
   "scripts": {
     "db-up": "db-migrate up --config ./db/database.json --migrations-dir ./db/migrations",
     "db-down": "db-migrate down --config ./db/database.json --migrations-dir ./db/migrations",
+    "dump-cards": "mysqldump --user=root --host=localhost --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers foundry_db cards prices > cards.sql",
+    "dump-codex": "mysqldump --user=root --host=localhost --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers foundry_db acceleration board_wipes card_advantage counters stax tutors > codex.sql",
     "lint": "eslint --fix src/ --ext .ts",
     "download": "ts-node -r dotenv/config src/cardImporter/downloader.ts dotenv_config_path=./.env.localhost",
     "upload": "ts-node -r dotenv/config src/cardImporter/uploader.ts dotenv_config_path=./.env.localhost",
