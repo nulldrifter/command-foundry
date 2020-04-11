@@ -11,7 +11,8 @@
     "lint": "eslint --fix src/ --ext .ts",
     "download": "ts-node -r dotenv/config src/cardImporter/downloader.ts dotenv_config_path=./.env.localhost",
     "upload": "ts-node -r dotenv/config src/cardImporter/uploader.ts dotenv_config_path=./.env.localhost",
-    "test": "jest --watch --coverage test/unit**"
+    "test": "jest --watch --coverage test/unit**",
+    "zip-exports": "zip foundry.sql.zip cards.sql codex.sql"
   },
   "repository": {
     "type": "git",
