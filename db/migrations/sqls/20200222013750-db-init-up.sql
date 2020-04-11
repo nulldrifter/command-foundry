@@ -209,7 +209,7 @@ CREATE TABLE stax (
 CREATE TABLE counters (
 	cardId INTEGER,
     additionalCost VARCHAR(64),
-    altCost INT(2),
+    altCost VARCHAR(64),
     rank INT(2) UNSIGNED,
     targets VARCHAR(64),
 
@@ -225,7 +225,7 @@ CREATE TABLE board_wipes (
     removes VARCHAR(64),
     timing VARCHAR(16),
     toughness VARCHAR(10),
-    upsides VARCHAR(16),
+    upsides VARCHAR(64),
 
     PRIMARY KEY (cardId),
     FOREIGN KEY (cardId) REFERENCES cards(id)
@@ -235,7 +235,7 @@ CREATE TABLE tutors (
 	cardId INTEGER,
     finds VARCHAR(100),
     puts VARCHAR(100),
-    quantity VARCHAR(5),
+    quantity VARCHAR(64),
     rank INT(2) UNSIGNED,
 
     PRIMARY KEY (cardId),

@@ -3,16 +3,14 @@ import {parseAndUploadCodex} from './codexParser';
 
 import * as AdmZip from 'adm-zip';
 
-const massageSql = (sql: string): string => sql
-	.split('\n')
-	.splice(190) // rm CREATE TABLE statements
-	.join('\n')
-	.replace(/INSERT INTO/gi, 'INSERT IGNORE INTO'); // ignore records we already have
+const skipExistingRecords = (sql: string): string => sql
+	.replace(/CREATE TABLE/gi, 'CREATE TABLE IF NOT EXISTS')
+	.replace(/INSERT INTO/gi, 'INSERT IGNORE INTO');
 
 const unzipSql = (): string => {
 	const zip = new AdmZip('./AllPrintings.sqlite.zip'), // path is relative to the dir the npm script is ran
 		[inserts] = zip.getEntries();
-	return massageSql(zip.readAsText(inserts));
+	return skipExistingRecords(zip.readAsText(inserts));
 };
 
 const unzipAndUploadFullSql = async (db: Database): Promise<void> => {
