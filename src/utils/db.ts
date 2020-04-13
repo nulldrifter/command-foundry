@@ -1,23 +1,22 @@
-import {DbConfig} from '../types/configs';
-import {createConnection} from 'mysql';
+import {createPool, Pool, PoolConfig} from 'mysql';
 
 export class Database {
-	connection;
+	public readonly pool: Pool;
 
-	constructor(mySqlConfig: DbConfig) {
-		// TODO: replace with connection pool so we can parallelize uploads
-		this.connection = createConnection(mySqlConfig);
-		this.connection.connect();
+	constructor(mySqlConfig: PoolConfig) {
+		this.pool = createPool(mySqlConfig);
 	}
 
 	query(sql: string): Promise<object[]|void> {
-		return this.connection.query(sql, (err, results) => {
-			if (err) throw err;
-			console.log(results[0]);
+		return new Promise((resolve, reject) => {
+			return this.pool.query(sql, (err, results) => {
+				if (err) reject(err);
+				resolve(results);
+			});
 		});
 	}
 
 	close(): Promise<void> {
-		return this.connection.end();
+		return this.pool.end();
 	}
 }
