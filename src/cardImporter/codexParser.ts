@@ -120,10 +120,9 @@ export const parseCardAdvantageToSql = (sheet: CardAdvantage[]): string => {
 };
 
 
-export const parseAndUploadCodex = async (db: Database): Promise<(object|void)[]> => {
-	// TODO: parse 'removal' tab once populated
+export const parseAndUploadCodex = async (db: Database): Promise<(void)> => {
 	const [acceleration, stax, counters, removal, wipes, tutors, cardAdvantage] = parser.parseXls2Json('./Codex.xlsx'); // eslint-disable-line @typescript-eslint/no-unused-vars
-	return Promise.all([
+	await Promise.all([
 		db.query(parseAccelerationToSql(acceleration)),
 		db.query(parseStaxToSql(stax)),
 		db.query(parseCountersToSql(counters)),
