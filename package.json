@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.14",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "mysql": "^2.18.1",
     "simple-excel-to-json": "^2.2.1"
